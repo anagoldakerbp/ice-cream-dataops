@@ -74,8 +74,9 @@ def handle(client: CogniteClient, data: Dict[str, Any] = {}) -> None:
     sites = None
 
     if data:
-        lookback_minutes = timedelta(minutes=data.get("lookback_minutes", 60)).total_seconds() * 1000
-        
+        #lookback_minutes = timedelta(minutes=data.get("lookback_minutes", 60)).total_seconds() * 1000
+        lookback_minutes = timedelta(minutes=data.get("lookback_minutes", 60))
+
         sites = data.get("sites")
 
     all_sites = [
@@ -91,8 +92,8 @@ def handle(client: CogniteClient, data: Dict[str, Any] = {}) -> None:
         "London",
     ]
 
-    lookback_minutes = lookback_minutes or timedelta(minutes=60).total_seconds() * 1000
-    
+    #lookback_minutes = lookback_minutes or timedelta(minutes=60).total_seconds() * 1000
+    lookback_minutes = lookback_minutes or timedelta(minutes=60)
     sites = sites or all_sites
 
     print(f"Processing datapoints for these sites: {sites}")
