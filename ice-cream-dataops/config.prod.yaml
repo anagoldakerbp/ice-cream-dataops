@@ -14,7 +14,7 @@ variables:
       data_foundation:
         data_developer_source_id: ${DATA_DEVELOPER_SOURCE_ID}
       ice_cream_api:
-        icapi_extractors_source_id: 8c6b1ec8-37f1-420d-af5d-6ec98a38ed00
+        icapi_extractors_source_id: 8d69f25f-afa0-4884-b847-bac33c71d564
         tokenUri: ${IDP_TOKEN_URL}
         cdfProjectName: ${CDF_PROJECT}
         scopes: ${IDP_SCOPES}
