@@ -36,6 +36,13 @@ def get_time_series_for_site(client: CogniteClient, site):
         )
         return []
 
+    if not sub_tree_root.path:
+        print(
+            f"----CogniteAsset for {site} has no 'path' set yet!----\n"
+            f"    Asset hierarchy may still be processing, skipping for now."
+        )
+        return []
+
     sub_tree_nodes = client.data_modeling.instances.list(
         instance_type=CogniteAsset,
         filter=Prefix(property=["cdf_cdm", "CogniteAsset/v1", "path"], value=sub_tree_root.path),
@@ -165,4 +172,4 @@ def handle(client: CogniteClient = None, data=None):
 
         report_ext_pipe(client, "success")
     except Exception as e:
-        report_ext_pipe(client, "fail", e)
+        report_ext_pipe(client, "fail", str(e)[:1000])
